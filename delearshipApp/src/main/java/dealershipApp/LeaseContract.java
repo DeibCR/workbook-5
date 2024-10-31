@@ -41,8 +41,24 @@ public class LeaseContract extends Contract{
 
     @Override
     public String getRepresentation() {
-        return String.format("LEASE|%s|%s|%s|%s|%.2f|%.2f|%.2f",
-                getDateOfContract(), getCustomerName(), getCustomerEmail(),
-                getVehicleSold().toString(), expectedEndingValuePercentage, leaseFee, getTotalPrice());
+        //return String.format("LEASE|%s|%s|%s|%s|%.2f|%.2f|%.2f",
+               // getDateOfContract(), getCustomerName(), getCustomerEmail(),
+               // getVehicleSold().toString(), expectedEndingValuePercentage, leaseFee, getTotalPrice());
+        return String.format("LEASE|%s|%s|%s|%s|%d|%s|%s|%s|%s|%d|%.2f|%.2f|%.2f|%.2f|%.2f",
+                getDateOfContract(),
+                getCustomerName(),
+                getCustomerEmail(),
+                getVehicleSold().getVin(),
+                getVehicleSold().getYear(),
+                getVehicleSold().getMake(),
+                getVehicleSold().getModel(),
+                getVehicleSold().getVehicleType(),
+                getVehicleSold().getColor(),
+                getVehicleSold().getOdometer(),
+                getVehicleSold().getPrice(),
+                getExpectedEndingValuePercentage(),
+                getLeaseFee(),
+                getTotalPrice(),
+                getMonthlyPayment());
     }
 }

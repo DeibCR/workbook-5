@@ -70,9 +70,28 @@ public class SalesContract extends Contract{
 
     @Override
     public String getRepresentation() {
-        return String.format("SALE|%s|%s|%s|%d|%s|%d|%.2f|%.2f|%.2f|%.2f|%b",
-                getDateOfContract(), getCustomerName(), getCustomerEmail(),
-                getVehicleSold().getVin(), getVehicleSold().getMake(),
-                getVehicleSold().getYear(), salesTax, recordingFee, processingFee, getTotalPrice(), isFinance);
+       // return String.format("SALE|%s|%s|%s|%d|%s|%d|%.2f|%.2f|%.2f|%.2f|%b",
+               //// getDateOfContract(), getCustomerName(), getCustomerEmail(),
+               // getVehicleSold().getVin(), getVehicleSold().getMake(),
+                //getVehicleSold().getYear(), salesTax, recordingFee, processingFee, getTotalPrice(), isFinance);
+        Vehicle vehicle = getVehicleSold();
+        return String.format("SALE|%s|%s|%s|%s|%d|%s|%s|%s|%s|%d|%.2f|%.2f|%.2f|%.2f|%.2f|%s|%.2f",
+                getDateOfContract(),
+                getCustomerName(),
+                getCustomerEmail(),
+                vehicle.getVin(),
+                vehicle.getYear(),
+                vehicle.getMake(),
+                vehicle.getModel(),
+                vehicle.getVehicleType(),
+                vehicle.getColor(),
+                vehicle.getOdometer(),
+                vehicle.getPrice(),
+                getSalesTax(),
+                getRecordingFee(),
+                getProcessingFee(),
+                getTotalPrice(),
+                "NO", // Assuming this is a placeholder for some condition
+                0.00 );// Assuming this is another placeholder
     }
 }
