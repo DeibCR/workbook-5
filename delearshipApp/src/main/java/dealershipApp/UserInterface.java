@@ -1,9 +1,11 @@
 package dealershipApp;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
     private final DealershipFileManager fileManager;
+    private final ContractDataManager contractDataManager;
 
     private Dealership dealership;
     private final Scanner scanner;
@@ -11,11 +13,14 @@ public class UserInterface {
     public UserInterface() {
 
         fileManager = new DealershipFileManager();
+        contractDataManager = new ContractDataManager();
         scanner = new Scanner(System.in);
     }
 
     private void init() {
         dealership = fileManager.getDealership("./src/main/resources/inventory.csv", "D & B Used Cars", "111 Old Benbrook Rd", "817-555-5555");
+        List<Contract> contracts=contractDataManager.getContract("./src/main/resources/contracts.csv");
+        contracts.forEach(dealership::addContract);
     }
 
     public void display() {
@@ -45,7 +50,8 @@ public class UserInterface {
         System.out.printf("║ %-45s ║%n", "7. Search vehicles by type");
         System.out.printf("║ %-45s ║%n", "8. Search vehicles by mileage");
         System.out.printf("║ %-45s ║%n", "9. Search vehicles by year");
-        System.out.printf("║ %-45s ║%n", "10. Exit");
+        System.out.printf("║ %-45s ║%n", "10. View all contracts");
+        System.out.printf("║ %-45s ║%n", "11. Exit");
         System.out.print("Please type an option to continue:");
     }
 
@@ -98,6 +104,10 @@ public class UserInterface {
                 return false;
             }
             case 10 -> {
+                getAllContracts();
+                return false;
+            }
+            case 11 -> {
                 System.out.println("Exiting application. Goodbye!");
                 return true;
             }
@@ -111,6 +121,16 @@ public class UserInterface {
     public void getAllVehicles() {
         headerDisplay();
         dealership.getAllVehicles().forEach(System.out::println);
+    }
+
+    public void getAllContracts() {
+        List<Contract> contracts = dealership.getAllContracts(); // Assuming this method retrieves the list of contracts
+        if (contracts.isEmpty()) {
+            System.out.println("No contracts available.");
+        } else {
+            headerDisplayContracts();
+            contracts.forEach(contract -> System.out.println(contract.getRepresentation()));
+        }
     }
 
     private void addVehicleRequest() {
@@ -206,6 +226,15 @@ public class UserInterface {
                 """);
     }
 
+    private void headerDisplayContracts() {
+        System.out.println("""
+                --------------------------------------------------------------------------------------------
+                                                All Contracts
+                Date       Customer Name   Customer Email           Vehicle Sold
+                --------------------------------------------------------------------------------------------
+                """);
+    }
+
     private int promptForInt(String message) {
         System.out.print(message);
         return Integer.parseInt(scanner.nextLine());
@@ -224,6 +253,8 @@ public class UserInterface {
     private void saveDealershipData() {
         fileManager.saveDealership(dealership, "./src/main/resources/inventory.csv");
     }
+
+
 
 
 }

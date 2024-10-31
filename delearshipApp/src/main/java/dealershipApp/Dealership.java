@@ -11,12 +11,14 @@ public class Dealership {
     private final String phone;
 
     private final ArrayList<Vehicle> inventory;
+    private final ArrayList<Contract> contracts;
 
     public Dealership(String name, String address, String phone, ArrayList<Vehicle> inventory) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.inventory = inventory;
+        this.contracts = new ArrayList<>();
     }
 
 
@@ -92,6 +94,17 @@ public class Dealership {
 
     public String getPhone() {
         return phone;
+    }
+
+    public void addContract(Contract contract) {
+        if (contract == null) {
+            throw new IllegalArgumentException("A contract cannot be null");
+        }
+        contracts.add(contract);
+    }
+
+    public List<Contract> getAllContracts() {
+        return new ArrayList<>(contracts);
     }
 }
 
