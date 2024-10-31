@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b6e2e3d-cb05-42ac-b6f2-7621286fa867" name="Changes" comment="display updated">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/assetManager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/assetManager/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pluralsight/assetManager/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pluralsight/assetManager/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../delearshipApp/src/main/java/dealershipApp/ContractDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/src/main/java/dealershipApp/ContractDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../delearshipApp/src/main/java/dealershipApp/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/src/main/java/dealershipApp/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../delearshipApp/src/main/java/dealershipApp/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/src/main/java/dealershipApp/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/ContractDataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/ContractDataManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/MainApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/UserInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/UserInterface.class" afterDir="false" />
-    </list>
+    <list default="true" id="3b6e2e3d-cb05-42ac-b6f2-7621286fa867" name="Changes" comment="display updated" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
