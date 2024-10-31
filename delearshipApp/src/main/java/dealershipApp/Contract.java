@@ -1,21 +1,18 @@
 package dealershipApp;
 
-public class Contract {
+public abstract class Contract {
     private String dateOfContract;
-    private String customerName;
-    private String customerEmail;
-    private boolean vehicleSold;
+    private   String customerName;
+    private  String customerEmail;
+    private final Vehicle vehicleSold;
 
-    private double totalPrice;
-    private double monthlyPayment;
 
-    public Contract(String dateOfContract, String customerName, String customerEmail, boolean vehicleSold, double totalPrice, double monthlyPayment) {
+
+    public Contract(String dateOfContract, String customerName, String customerEmail, Vehicle vehicleSold) {
         this.dateOfContract = dateOfContract;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.vehicleSold = vehicleSold;
-        this.totalPrice = totalPrice;
-        this.monthlyPayment = monthlyPayment;
     }
 
     public String getDateOfContract() {
@@ -42,11 +39,13 @@ public class Contract {
         this.customerEmail = customerEmail;
     }
 
-    public boolean isVehicleSold() {
+    public Vehicle getVehicleSold() {
         return vehicleSold;
     }
 
-    public void setVehicleSold(boolean vehicleSold) {
-        this.vehicleSold = vehicleSold;
-    }
+    public abstract double getTotalPrice();
+
+    public abstract double getMonthlyPayment();
+
+    public abstract String  getRepresentation();
 }
