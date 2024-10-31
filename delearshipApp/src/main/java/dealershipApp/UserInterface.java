@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class UserInterface {
     private final DealershipFileManager fileManager;
+
     private Dealership dealership;
     private final Scanner scanner;
 
     public UserInterface() {
+
         fileManager = new DealershipFileManager();
         scanner = new Scanner(System.in);
     }
