@@ -24,14 +24,16 @@ public class Main {
             System.out.println("Date Acquired: " + asset.getDateAcquired());
             System.out.println("Original Cost: $" + asset.getOriginalCost());
             System.out.println("Current Value: $" + asset.getValue());
-            System.out.println("---------------------------");
+
 
             if (asset instanceof House) {
                 House house = (House) asset;
                 System.out.println("Address: " + house.getAddress());
+                System.out.println("---------------------------");
             } else if (asset instanceof Vehicle) {
                 Vehicle vehicle = (Vehicle) asset;
                 System.out.println("Year and Make/Model: " + vehicle.getYear() + " " + vehicle.getMakeModel());
+                System.out.println("---------------------------");
             }
         }
 
