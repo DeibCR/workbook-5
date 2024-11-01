@@ -20,6 +20,7 @@ public class UserInterface {
     }
 
     private void init() {
+
         dealership = fileManager.getDealership("./src/main/resources/inventory.csv", "D & B Used Cars", "111 Old Benbrook Rd", "817-555-5555");
         List<Contract> contracts = contractDataManager.getContract("./src/main/resources/contracts.csv");
         contracts.forEach(dealership::addContract);
@@ -270,8 +271,8 @@ public class UserInterface {
                 """);
     }
 
-    /* of 4 lines of code for those repetitive actions, these simple methods help
-      to reduce visual noise
+    /* these methods help  for those repetitive actions, the simple actions that you always need to do
+      help to reduce visual noise
    */
 
 

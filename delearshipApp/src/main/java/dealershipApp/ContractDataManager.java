@@ -112,10 +112,11 @@ public class ContractDataManager {
                             leaseContract.getExpectedEndingValuePercentage(),
                             leaseContract.getLeaseFee());
                 } else {
-                    continue; // Skip if it's not a recognized contract type
+                    continue;
                 }
                 bw.write(data);
                 bw.newLine();
+                bw.close();
             }
 
         } catch (IOException e) {
