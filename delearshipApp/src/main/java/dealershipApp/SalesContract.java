@@ -7,13 +7,13 @@ public class SalesContract extends Contract{
     private final double recordingFee;
     private final double processingFee;
     private final boolean isFinance;
-    private static final ResourceBundle resourceBundle= ResourceBundle.getBundle("contract_config");// Using resource bundle to provide flexibility and maintainability
+    private static final ResourceBundle resourceBundle= ResourceBundle.getBundle("contract_config");
 
     public SalesContract(String dateOfContract, String customerName, String customerEmail, Vehicle vehicleSold, double salesTax, double recordingFee, double processingFee, boolean isFinance) {
         super(dateOfContract, customerName, customerEmail, vehicleSold);
         this.salesTax = Double.parseDouble(resourceBundle.getString("sales.tax"));
         this.recordingFee = Double.parseDouble(resourceBundle.getString("recording.fee"));
-        this.processingFee = vehicleSold.getPrice()>10000 ? //the processingFee get his value depending on or not of the condition
+        this.processingFee = vehicleSold.getPrice()>10000 ?
                 Double.parseDouble(resourceBundle.getString("processing.fee.under10000")) :
                 Double.parseDouble(resourceBundle.getString("processing.fee.over10000"));
 
@@ -50,7 +50,7 @@ public class SalesContract extends Contract{
     @Override
     public double getMonthlyPayment() {
         if (!isFinance) {
-            return 0; // No monthly payment if not financed
+            return 0;
         }
         double interestRate = getVehicleSold().getPrice() >= 10000
                 ? Double.parseDouble(resourceBundle.getString("monthly.payment.interest.over10000"))
@@ -59,7 +59,8 @@ public class SalesContract extends Contract{
                 ? Integer.parseInt(resourceBundle.getString("monthly.payment.term.over10000"))
                 : Integer.parseInt(resourceBundle.getString("monthly.payment.term.under10000"));
 
-        return (getVehicleSold().getPrice() * (1 + interestRate)) / termMonths; // Monthly payment formula for financing
+        return (getVehicleSold().getPrice() * (1 + interestRate)) / termMonths;
+
     }
 
 
@@ -86,8 +87,8 @@ public class SalesContract extends Contract{
                 getRecordingFee(),
                 getProcessingFee(),
                 getTotalPrice(),
-                "NO", // Assuming this is a placeholder for some condition
-                0.00 );// Assuming this is another placeholder
+                "NO",
+                0.00 );
     }
 }
 

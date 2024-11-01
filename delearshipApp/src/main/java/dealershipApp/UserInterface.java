@@ -51,12 +51,10 @@ public class UserInterface {
 
         System.out.println(rB.getString("menu.borderLine"));
 
-        //  each menu option
-        for (int i = 1; i <= 12; i++) {
+        for (int i = Integer.parseInt(rB.getString("first.option")); i <= Integer.parseInt(rB.getString("last.option")); i++) {
             String optionKey = "menu.option" + i;
             System.out.println(rB.getString(optionKey));
         }
-        // prompt
         System.out.print(rB.getString("menu.prompt"));
     }
 
@@ -71,58 +69,45 @@ public class UserInterface {
 
     private boolean processInput(int input) {
         switch (input) {
-            case 1 -> {
+            case 1:
                 getAllVehicles();
                 return false;
-            }
-            case 2 -> {
+            case 2:
                 addVehicleRequest();
                 return false;
-            }
-            case 3 -> {
+            case 3:
                 removeVehicle();
                 return false;
-            }
-            case 4 -> {
+            case 4:
                 searchByPrice();
                 return false;
-            }
-            case 5 -> {
+            case 5:
                 searchByMakeAndModel();
                 return false;
-            }
-            case 6 -> {
+            case 6:
                 searchByColor();
                 return false;
-            }
-            case 7 -> {
+            case 7:
                 searchByType();
                 return false;
-            }
-            case 8 -> {
+            case 8:
                 searchByMileage();
                 return false;
-            }
-            case 9 -> {
+            case 9:
                 searchByYear();
                 return false;
-            }
-            case 10 -> {
+            case 10:
                 getAllContracts();
                 return false;
-            }
-            case 11 -> {
+            case 11:
                 addContractRequest();
                 return false;
-            }
-            case 12 -> {
+            case 12:
                 System.out.println(rB.getString("exit.output"));
                 return true;
-            }
-            default -> {
+            default:
                 System.out.println(rB.getString("error.input"));
                 return false;
-            }
         }
     }
 
@@ -132,7 +117,7 @@ public class UserInterface {
     }
 
     public void getAllContracts() {
-        List<Contract> contracts = dealership.getAllContracts(); // Assuming this method retrieves the list of contracts
+        List<Contract> contracts = dealership.getAllContracts();
         if (contracts.isEmpty()) {
             System.out.println(rB.getString("contracts.error"));
         } else {
@@ -284,6 +269,11 @@ public class UserInterface {
                 --------------------------------------------------------------------------------------------
                 """);
     }
+
+    /* of 4 lines of code for those repetitive actions, these simple methods help
+      to reduce visual noise
+   */
+
 
     private int promptForInt(String message) {
         System.out.print(message);

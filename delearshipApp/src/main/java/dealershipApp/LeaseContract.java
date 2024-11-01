@@ -34,7 +34,7 @@ public class LeaseContract extends Contract{
         double interestRate = Double.parseDouble(resourceBundle.getString("lease.monthly.payment.interest"));
         int termMonths = Integer.parseInt(resourceBundle.getString("lease.monthly.payment.term"));
 
-        // Monthly payment calculation based on the depreciated vehicle value and lease fee's interest
+
         double principalAmount = getVehicleSold().getPrice() - expectedEndingValuePercentage;
         return (principalAmount + leaseFee * interestRate) / termMonths;
     }
