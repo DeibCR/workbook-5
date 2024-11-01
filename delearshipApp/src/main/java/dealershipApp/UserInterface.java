@@ -8,7 +8,6 @@ import java.text.MessageFormat;
 public class UserInterface {
     private final DealershipFileManager fileManager;
     private final ContractDataManager contractDataManager;
-
     private Dealership dealership;
     private final Scanner scanner;
     private static final ResourceBundle rB = ResourceBundle.getBundle("messages");
@@ -179,6 +178,7 @@ public class UserInterface {
             List<Contract> updatedContracts = dealership.getAllContracts();
             contractDataManager.saveContracts(updatedContracts, "./src/main/resources/contracts.csv");
             dealership.removeVehicle(vehicleSold);
+            saveDealershipData();
             System.out.println(rB.getString("contract.added"));
 
         } catch (NumberFormatException e) {
