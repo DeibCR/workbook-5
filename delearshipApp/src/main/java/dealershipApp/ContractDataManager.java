@@ -93,7 +93,7 @@ public class ContractDataManager {
                             saleContract.getSalesTax(),
                             saleContract.getRecordingFee(),
                             saleContract.getProcessingFee(),
-                            saleContract.isFinance(), //TODO: FIX THE DISPLAY FOR YES/NO instead of TRUE/FALSE
+                            saleContract.isFinance()? "YES" : "NO", //TODO: FIX THE DISPLAY FOR YES/NO instead of TRUE/FALSE
                             saleContract.getTotalPrice());
                 } else if (contract instanceof LeaseContract) {
                     LeaseContract leaseContract = (LeaseContract) contract;

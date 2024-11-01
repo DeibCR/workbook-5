@@ -1,7 +1,9 @@
 package dealershipApp;
 
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.text.MessageFormat;
 
 public class UserInterface {
     private final DealershipFileManager fileManager;
@@ -9,6 +11,7 @@ public class UserInterface {
 
     private Dealership dealership;
     private final Scanner scanner;
+    private static final ResourceBundle rB = ResourceBundle.getBundle("messages");
 
     public UserInterface() {
 
@@ -19,7 +22,7 @@ public class UserInterface {
 
     private void init() {
         dealership = fileManager.getDealership("./src/main/resources/inventory.csv", "D & B Used Cars", "111 Old Benbrook Rd", "817-555-5555");
-        List<Contract> contracts=contractDataManager.getContract("./src/main/resources/contracts.csv");
+        List<Contract> contracts = contractDataManager.getContract("./src/main/resources/contracts.csv");
         contracts.forEach(dealership::addContract);
     }
 
@@ -37,34 +40,35 @@ public class UserInterface {
     }
 
     private void displayMenu() {
-        System.out.println("\n================================================");
-        System.out.println("\n               Dealership Menu                  ");
-        System.out.printf("%s-%s-%s\n%n", dealership.getName(), dealership.getAddress(), dealership.getPhone());
-        System.out.println("\n================================================");
-        System.out.printf("║ %-45s ║%n", "1. View all vehicles");
-        System.out.printf("║ %-45s ║%n", "2. Add a vehicle");
-        System.out.printf("║ %-45s ║%n", "3. Remove a vehicle");
-        System.out.printf("║ %-45s ║%n", "4. Search vehicles by price");
-        System.out.printf("║ %-45s ║%n", "5. Search vehicles by make and model");
-        System.out.printf("║ %-45s ║%n", "6. Search vehicles by color");
-        System.out.printf("║ %-45s ║%n", "7. Search vehicles by type");
-        System.out.printf("║ %-45s ║%n", "8. Search vehicles by mileage");
-        System.out.printf("║ %-45s ║%n", "9. Search vehicles by year");
-        System.out.printf("║ %-45s ║%n", "10. View all contracts");
-        System.out.printf("║ %-45s ║%n", "11. Add a contract");
-        System.out.printf("║ %-45s ║%n", "12. Exit");
-        System.out.print("Please type an option to continue:");
+        System.out.println(rB.getString("menu.borderLine"));
+        System.out.println(rB.getString("menu.title"));
+
+        String header = MessageFormat.format(rB.getString("menu.header"),
+                dealership.getName(),
+                dealership.getAddress(),
+                dealership.getPhone()
+        );
+        System.out.println(header);
+
+        System.out.println(rB.getString("menu.borderLine"));
+
+        //  each menu option
+        for (int i = 1; i <= 12; i++) {
+            String optionKey = "menu.option" + i;
+            System.out.println(rB.getString(optionKey));
+        }
+        // prompt
+        System.out.print(rB.getString("menu.prompt"));
     }
 
     private int getUserInput() {
         try {
             return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter a number between 1 and 12.");
+            System.out.println(rB.getString("error.input"));
             return -1;
         }
     }
-
 
     private boolean processInput(int input) {
         switch (input) {
@@ -113,11 +117,11 @@ public class UserInterface {
                 return false;
             }
             case 12 -> {
-                System.out.println("Exiting application. Goodbye!");
+                System.out.println(rB.getString("exit.output"));
                 return true;
             }
             default -> {
-                System.out.println("Invalid choice. Please try again.");
+                System.out.println(rB.getString("error.input"));
                 return false;
             }
         }
@@ -131,85 +135,81 @@ public class UserInterface {
     public void getAllContracts() {
         List<Contract> contracts = dealership.getAllContracts(); // Assuming this method retrieves the list of contracts
         if (contracts.isEmpty()) {
-            System.out.println("No contracts available.");
+            System.out.println(rB.getString("contracts.error"));
         } else {
             headerDisplayContracts();
             contracts.forEach(contract -> System.out.println(contract.getRepresentation()));
         }
     }
 
-   public void  addContractRequest(){
-        try  {
-            String dateOfContract = promptForString("Enter contract date (YYYY-MM-DD): ");
-            String customerName = promptForString("Enter customer full name: ");
-            String customerEmail = promptForString("Enter customer email address: ");
+    public void addContractRequest() {
+        try {
+            String dateOfContract = promptForString(rB.getString("contract.date"));
+            String customerName = promptForString(rB.getString("contract.name"));
+            String customerEmail = promptForString(rB.getString("contract.email"));
 
-            int vin = promptForInt("Enter vehicle VIN for this contract: "); // to get the vehicle
+            int vin = promptForInt(rB.getString("contract.vin")); // to get the vehicle
             Vehicle vehicleSold = dealership.getAllVehicles().stream()
                     .filter(vehicle -> vehicle.getVin() == vin)
                     .findFirst()
                     .orElse(null);
 
             if (vehicleSold == null) {
-                System.out.println("Vehicle not found with the provided VIN.");
+                System.out.println(rB.getString("contract.vin.error"));
                 return;
             }
 
-            String contractType = promptForString("Enter contract type (sale/lease): ").toLowerCase();
+            String contractType = promptForString(rB.getString("contract.type")).toLowerCase();
 
             Contract newContract;
             if (contractType.equals("sale")) {
-                boolean isFinance = promptForString("Is this contract financed? (yes/no): ").equalsIgnoreCase("yes");
+                boolean isFinance = promptForString(rB.getString("contract.finance")).equalsIgnoreCase("yes");
 
                 newContract = new SalesContract(dateOfContract, customerName, customerEmail, vehicleSold, 0.0, 0.0, 0.0, isFinance);
 
             } else if (contractType.equals("lease")) {
 
-                newContract= new LeaseContract(dateOfContract,customerName,customerEmail,vehicleSold,0.0,0.0);
+                newContract = new LeaseContract(dateOfContract, customerName, customerEmail, vehicleSold, 0.0, 0.0);
 
-            }
-
-            else {
-                System.out.println("Invalid contract type. Please enter 'sale' or 'lease'.");
+            } else {
+                System.out.println(rB.getString("error.contract.type"));
                 return;
             }
             dealership.addContract(newContract);
             List<Contract> updatedContracts = dealership.getAllContracts();
-            contractDataManager.saveContracts(updatedContracts,"./src/main/resources/contracts.csv");
+            contractDataManager.saveContracts(updatedContracts, "./src/main/resources/contracts.csv");
             dealership.removeVehicle(vehicleSold);
-            System.out.println("A new contract has been added and saved.");
+            System.out.println(rB.getString("contract.added"));
 
         } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter the correct data types.");
+            System.out.println(rB.getString("contract.error1"));
 
         }
-
     }
 
     private void addVehicleRequest() {
         try {
-            int id = promptForInt("Enter vehicle VIN: ");
-            int year = promptForInt("Enter vehicle year: ");
-            String make = promptForString("Enter vehicle make: ");
-            String model = promptForString("Enter vehicle model: ");
-            String type = promptForString("Enter vehicle type: ");
-            String color = promptForString("Enter vehicle color: ");
-            int mileage = promptForInt("Enter vehicle mileage: ");
-            double price = promptForDouble("Enter vehicle price: ");
+            int id = promptForInt(rB.getString("vin.request"));
+            int year = promptForInt(rB.getString("year.request"));
+            String make = promptForString(rB.getString("make.request"));
+            String model = promptForString(rB.getString("model.request"));
+            String type = promptForString(rB.getString("type.request"));
+            String color = promptForString(rB.getString("color.request"));
+            int mileage = promptForInt(rB.getString("mileage.request"));
+            double price = promptForDouble(rB.getString("price.request"));
 
             Vehicle newVehicle = new Vehicle(id, year, make, model, type, color, mileage, price);
             dealership.addVehicle(newVehicle);
-            System.out.println("A new vehicle has been added.");
+            System.out.println(rB.getString("added.request"));
             saveDealershipData();
         } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter the correct data types.");
+            System.out.println(rB.getString("request.error"));
         }
     }
 
-
     private void removeVehicle() {
         try {
-            int vin = promptForInt("Enter a vehicle VIN to remove: ");
+            int vin = promptForInt(rB.getString("remove.vin.request"));
             Vehicle vehicleToRemove = dealership.getAllVehicles().stream()
                     .filter(vehicle -> vehicle.getVin() == vin)
                     .findFirst()
@@ -217,53 +217,53 @@ public class UserInterface {
 
             if (vehicleToRemove != null) {
                 dealership.removeVehicle(vehicleToRemove);
-                System.out.println("Vehicle with VIN " + vin + " has been removed.");
+                System.out.println((rB.getString("remove1")) + vin + (rB.getString("remove2")));
                 saveDealershipData();
             } else {
-                System.out.println("Vehicle not found.");
+                System.out.println(rB.getString("remove.error1"));
             }
         } catch (NumberFormatException e) {
-            System.out.println("Invalid VIN. Please enter a valid number.");
+            System.out.println(rB.getString("remove.error2"));
         }
     }
 
     private void searchByPrice() {
-        double minPrice = promptForDouble("Enter a minimum price: ");
-        double maxPrice = promptForDouble("Enter a maximum price: ");
+        double minPrice = promptForDouble(rB.getString("search.price1"));
+        double maxPrice = promptForDouble(rB.getString("search.price2"));
         headerDisplay();
         dealership.getVehiclesByPrice(minPrice, maxPrice).forEach(System.out::println);
     }
 
 
     private void searchByMakeAndModel() {
-        String make=promptForString("Enter a vehicle make: ");
-        String model=promptForString("Enter a vehicle model: ");
+        String make = promptForString(rB.getString("search.make"));
+        String model = promptForString(rB.getString("search.model"));
         headerDisplay();
         dealership.getVehiclesByMakeModel(make, model).forEach(System.out::println);
     }
 
     private void searchByColor() {
-        String color=promptForString("Enter a vehicle color: ");
+        String color = promptForString(rB.getString("search.color"));
         headerDisplay();
         dealership.getVehiclesByColor(color).forEach(System.out::println);
     }
 
     private void searchByType() {
-       String type=promptForString("Enter a vehicle type: ");
+        String type = promptForString(rB.getString("search.type"));
         headerDisplay();
         dealership.getVehiclesByType(type).forEach(System.out::println);
     }
 
     private void searchByMileage() {
-        int minMileage=promptForInt("Enter a minimum mileage: ");
-        int maxMileage=promptForInt("Enter a maximum mileage: ");
+        int minMileage = promptForInt(rB.getString("search.mileage1"));
+        int maxMileage = promptForInt(rB.getString("search.mileage2"));
         headerDisplay();
         dealership.getVehiclesByMileage(minMileage, maxMileage).forEach(System.out::println);
 
     }
 
     private void searchByYear() {
-        int year=promptForInt("Enter the year of the vehicles to search for: ");
+        int year = promptForInt(rB.getString("search.year"));
         headerDisplay();
         dealership.getVehiclesByYear(year).forEach(System.out::println);
     }
@@ -271,15 +271,12 @@ public class UserInterface {
     //helpers methods to clean the code:
 
     public void headerDisplay() {
-        System.out.println("""
-                --------------------------------------------------------------------------------------------
-                                              All Vehicles
-                Vin      Year     Make        Model        Type      Color     Mileage     Price
-                --------------------------------------------------------------------------------------------
-                """);
+        System.out.println(rB.getString("header.display"));
     }
 
     private void headerDisplayContracts() {
+        //TODO: modify the display of this header to match the values
+
         System.out.println("""
                 --------------------------------------------------------------------------------------------
                                                 All Contracts
@@ -306,8 +303,6 @@ public class UserInterface {
     private void saveDealershipData() {
         fileManager.saveDealership(dealership, "./src/main/resources/inventory.csv");
     }
-
-
 
 
 }

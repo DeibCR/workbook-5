@@ -13,6 +13,8 @@ public class Dealership {
     private final ArrayList<Vehicle> inventory;
     private final ArrayList<Contract> contracts;
 
+
+
     public Dealership(String name, String address, String phone, ArrayList<Vehicle> inventory) {
         this.name = name;
         this.address = address;
