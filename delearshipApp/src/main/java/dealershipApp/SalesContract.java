@@ -45,11 +45,6 @@ public class SalesContract extends Contract{
         double basePrice= getVehicleSold().getPrice();
         double total= basePrice + ( basePrice * salesTax )+ recordingFee+processingFee;
         return total;
-
-
-
-
-
     }
 
     @Override
@@ -95,3 +90,4 @@ public class SalesContract extends Contract{
                 0.00 );// Assuming this is another placeholder
     }
 }
+

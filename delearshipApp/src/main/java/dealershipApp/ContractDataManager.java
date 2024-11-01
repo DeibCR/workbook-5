@@ -78,7 +78,7 @@ public class ContractDataManager {
                 String data;
                 if (contract instanceof SalesContract) {
                     SalesContract saleContract = (SalesContract) contract;
-                    data = String.format("SALE|%s|%s|%s|%s|%s|%s|%s|%b|%.2f|%.2f|%.2f|%.2f|%.2f",
+                    data = String.format("SALE|%s|%s|%s|%s|%d|%s|%s|%s|%s|%d|%.2f|%.2f|%.2f|%.2f|%b|%.2f",
                             saleContract.getDateOfContract(),
                             saleContract.getCustomerName(),
                             saleContract.getCustomerEmail(),
@@ -86,14 +86,18 @@ public class ContractDataManager {
                             saleContract.getVehicleSold().getYear(),
                             saleContract.getVehicleSold().getMake(),
                             saleContract.getVehicleSold().getModel(),
-                            saleContract.isFinance(),
+                            saleContract.getVehicleSold().getVehicleType(),
+                            saleContract.getVehicleSold().getColor(),
+                            saleContract.getVehicleSold().getOdometer(),
+                            saleContract.getVehicleSold().getPrice(),
                             saleContract.getSalesTax(),
                             saleContract.getRecordingFee(),
                             saleContract.getProcessingFee(),
+                            saleContract.isFinance(), //TODO: FIX THE DISPLAY FOR YES/NO instead of TRUE/FALSE
                             saleContract.getTotalPrice());
                 } else if (contract instanceof LeaseContract) {
                     LeaseContract leaseContract = (LeaseContract) contract;
-                    data = String.format("LEASE|%s|%s|%s|%s|%s|%s|%s|%.2f|%.2f",
+                    data = String.format("LEASE|%s|%s|%s|%s|%d|%s|%s|%s|%s|%d|%.2f|%.2f|%.2f",
                             leaseContract.getDateOfContract(),
                             leaseContract.getCustomerName(),
                             leaseContract.getCustomerEmail(),
@@ -101,6 +105,10 @@ public class ContractDataManager {
                             leaseContract.getVehicleSold().getYear(),
                             leaseContract.getVehicleSold().getMake(),
                             leaseContract.getVehicleSold().getModel(),
+                            leaseContract.getVehicleSold().getVehicleType(),
+                            leaseContract.getVehicleSold().getColor(),
+                            leaseContract.getVehicleSold().getOdometer(),
+                            leaseContract.getVehicleSold().getPrice(),
                             leaseContract.getExpectedEndingValuePercentage(),
                             leaseContract.getLeaseFee());
                 } else {
