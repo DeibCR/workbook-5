@@ -21,7 +21,6 @@ public class DealershipGUI extends JFrame {
     private JButton searchByTypeButton;
     private JButton searchByMakeAndButton;
     private JButton searchByMileageButton;
-    private JLabel dealershipInfoLabel;
     private Dealership dealership;
     private DealershipFileManager fileManager;
 
@@ -44,18 +43,15 @@ public class DealershipGUI extends JFrame {
         mainPanel.setLayout(new GridLayout(8, 2));
 
 
-        viewVehiclesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JTextArea textArea = new JTextArea(15, 30);
-                for (Vehicle vehicle : dealership.getAllVehicles()) {
-                    textArea.append(vehicle.toString() + "\n");
-                }
-                JScrollPane scrollPane = new JScrollPane(textArea);
-                scrollPane.setPreferredSize(new Dimension(500, 300)); // Width x Height
-                JOptionPane.showMessageDialog(null, scrollPane, "All Vehicles", JOptionPane.INFORMATION_MESSAGE);
-
+        viewVehiclesButton.addActionListener(e -> {
+            JTextArea textArea = new JTextArea(15, 30);
+            for (Vehicle vehicle : dealership.getAllVehicles()) {
+                textArea.append(vehicle.toString() + "\n");
             }
+            JScrollPane scrollPane = new JScrollPane(textArea);
+            scrollPane.setPreferredSize(new Dimension(500, 300)); // Width x Height
+            JOptionPane.showMessageDialog(null, scrollPane, "All Vehicles", JOptionPane.INFORMATION_MESSAGE);
+
         });
 
 

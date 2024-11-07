@@ -41,30 +41,30 @@ public class Vehicle extends Asset{
     @Override
     public double getValue() {
         int currentYear = LocalDate.now().getYear();
-        int age = currentYear - year; // Calculate the age of the vehicle
+        int age = currentYear - year;
 
-        double value = getOriginalCost(); // Start with the original cost
+        double value = getOriginalCost();
 
-        // Apply depreciation based on age
+
         if (age >= 0 && age <= 3) {
-            value -= (originalCost * 0.03 * age); // 3% per year for 0-3 years old
+            value -= (originalCost * 0.03 * age);
         } else if (age >= 4 && age <= 6) {
-            value -= (originalCost * 0.06 * age); // 6% per year for 4-6 years old
+            value -= (originalCost * 0.06 * age);
         } else if (age >= 7 && age <= 10) {
-            value -= (originalCost * 0.08 * age); // 8% per year for 7-10 years old
+            value -= (originalCost * 0.08 * age);
         } else if (age > 10) {
-            value = 1000.00; // Set value to $1000 for vehicles older than 10 years
+            value = 1000.00;
         }
 
-        // Adjust value based on odometer readings
+
         if (odometer > 100000) {
-            // Check if makeModel contains "Honda" or "Toyota"
+
             if (!(makeModel.toLowerCase().contains("honda") || makeModel.toLowerCase().contains("toyota"))) {
-                value *= 0.75; // Reduce final value by 25% if over 100,000 miles
+                value *= 0.75;
             }
         }
 
-        // Ensure that value does not fall below zero
+
         return Math.max(value, 0);
     }
 }

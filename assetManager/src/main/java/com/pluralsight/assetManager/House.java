@@ -59,26 +59,26 @@ public class House extends Asset{
     @Override
     public double getValue() {
         double houseValuePerSquareFoot = switch (condition) {
-            case EXCELLENT -> // Excellent
+            case EXCELLENT ->
                     190.00;
-            case GOOD -> // Good
+            case GOOD ->
                     130.00;
-            case FAIR -> // Fair
+            case FAIR ->
                     90.00;
-            case POOR -> // Poor
+            case POOR ->
                     80.00;
             default -> throw new IllegalStateException("Unexpected condition: " + condition);
         };
 
-        // Determine value per square foot based on condition
 
-        //  value of the house based on square footage
+
+
         double houseValue = houseValuePerSquareFoot * squareFoot;
 
-        //  additional lot size value
-        double lotValue = 0.25 * lotSize; // 25 cents per square foot of lot size
 
-        // Total value is the sum of house value and lot value
+        double lotValue = 0.25 * lotSize;
+
+
         return houseValue + lotValue;
     }
 }

@@ -13,7 +13,7 @@ public class Main {
         Vehicle workCar = new Vehicle("Sedan with great mileage", "2022-06-01", 30000.00, "Ford Fusion", 2018, 105000);
         Vehicle deibCar = new Vehicle("Sporty coupe", "2023-01-20", 45000.00, "Chevrolet Camaro", 2020, 25000);
 
-        // Adding all assets to the assets list
+
         assets.add(vacationHouse);
         assets.add(deibHouse);
         assets.add(workCar);

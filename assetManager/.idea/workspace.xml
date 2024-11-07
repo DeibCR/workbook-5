@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b6e2e3d-cb05-42ac-b6f2-7621286fa867" name="Changes" comment="display updated" />
+    <list default="true" id="3b6e2e3d-cb05-42ac-b6f2-7621286fa867" name="Changes" comment="display updated">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../delearshipApp/src/main/java/forms/CustomizedButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/assetManager/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/assetManager/Asset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/assetManager/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/assetManager/House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/assetManager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/assetManager/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/assetManager/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/assetManager/Vehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/src/main/java/forms/DealershipGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/src/main/java/forms/DealershipGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/src/main/java/forms/DealershipGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/src/main/java/forms/DealershipGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/contract_config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/contract_config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/contracts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/contracts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/ContractDataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/ContractDataManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/SalesContract.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/SalesContract.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/UserInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/dealershipApp/UserInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/forms/DealershipGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/inventory.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/inventory.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../delearshipApp/target/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../delearshipApp/target/classes/messages.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +65,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/pluralsight/workbook-5/delearshipApp"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
